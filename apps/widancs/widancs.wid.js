@@ -241,7 +241,7 @@
     g.drawImage(img,this.x,0,{scale:0.75}).flip();
 }
     
-  WIDGETS["ancs"] ={area:"tl", width:20,draw:draw};
+  WIDGETS["ancs"] ={area:"tl", width:30,draw:draw};
     
   function drawIcon(id){
     stage = id;
