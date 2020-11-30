@@ -49,7 +49,10 @@ function BMA223(){
 
   // values are 4 is face tap, 2 side tap, 1 bottom or top side tap
   setWatch(()=>{
-      DK08.emit("tap",(readreg(0x0b)&0x7f)>>4);
+      var rv = readreg(0x0b);
+      var v = (rv&0x7f)>>4;
+      v  = rv&0x80?-v:v;
+      DK08.emit("tap",v);
   },D4,{ repeat:true, debounce:false, edge:'rising' });
 
 
