@@ -361,8 +361,8 @@ function stopMeasure() {
 var RUNNING = false;
 
 DK08.on("dbltouch",(t)=>{
-  if (!RUNNING) {RUNNING=true; startMeasure();}
-  else {stopMeasure(); RUNNING=false;}
+  if (!RUNNING) {RUNNING=true; g.fast(true); startMeasure();}
+  else {stopMeasure(); g.fast(false); RUNNING=false;}
 });
 
 E.on("kill",()=>{stopMeasure();});
