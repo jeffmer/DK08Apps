@@ -187,14 +187,12 @@
     if (screentimeout) clearTimeout(screentimeout);
     SCREENACCESS.request();
     DK08.buzz().then(()=>{
-      setTimeout(()=>{
         DK08.backlight();     
         if (state.current.cat!=1){
           E.showAlert(message,title).then(send_action.bind(null,false));
         } else {
           E.showAlert(message,title).then(send_action.bind(null,true));
         }
-      },1000);
     });
   }
   

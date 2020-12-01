@@ -29,9 +29,9 @@ if (window.location.host=="espruino.com") {
 })();
 
 const DEVICEINFO = [ {
-    id : "BANGLEJS",
+    id : "DK08",
     name : "Bangle.js",
-    features : ["BLE","BLEHID","GRAPHICS","ACCEL","MAG"],
+    features : ["BLE","BLEHID"],
     img : "https://www.espruino.com/img/BANGLEJS_thumb.jpg"
   }, {
     id : "PUCKJS",
@@ -65,12 +65,6 @@ var originalAppJSON = undefined;
 function filterAppsForDevice(deviceId) {
   if (originalAppJSON===undefined)
     originalAppJSON = appJSON;
-  if (deviceId=="BANGLEJS") {
-    showToast(`Looks like you've got a <a href="https://www.espruino.com/Bangle.js" target="_blank">Bangle.js</a>.
-This Espruino App loader will make your Bangle run <b>just a single app</b>. For multiple apps specifically for
-Bangle.js, please see the <a href="https://www.banglejs.com/apps">Bangle.js App Loader</a>`, "warning", 20000);
-  }
-
   var device = DEVICEINFO.find(d=>d.id==deviceId);
   if (!device) {
     showToast(`Device ID ${deviceId} not recognised. Some apps may not work`, "warning");

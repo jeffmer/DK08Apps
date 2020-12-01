@@ -92,18 +92,18 @@ E.showMessage = function(msg,title) {
 };
 
 E.showAlert = function(msg,title) {
-  if (DK08.alert) {DK08.removeListener("tap",DK08.alert); DK08.alert=undefined;}
+  if (DK08.alert) {DK08.removeListener("dbltouch",DK08.alert); DK08.alert=undefined;}
   if (!msg) return Promise.resolve();  
   E.showMessage(msg,title); 
   var RES = null;
   DK08.alert = function(){
-        DK08.removeListener("tap",DK08.alert); 
+        DK08.removeListener("dbltouch",DK08.alert); 
         DK08.alert=undefined;
         return RES(true);
        };    
   return new Promise(resolve=>{
     RES = resolve;
-    DK08.on("tap",DK08.alert);
+    DK08.on("dbltouch",DK08.alert);
   });
 };
 
