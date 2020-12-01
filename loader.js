@@ -3,7 +3,7 @@ Puck.debug = 3;
 /* Are we only putting a single app on a device? If so
 apps should all be saved as .bootcde and we write info
 about the current app into app.info */
-Const.SINGLE_APP_ONLY = true;
+Const.SINGLE_APP_ONLY = false;
 /* Assume - until we know more - that we have no command
 to show messages. */
 Const.HAS_E_SHOWMESSAGE = true;
@@ -25,35 +25,15 @@ if (window.location.host=="espruino.com") {
   let username = "espruino";
   let githubMatch = window.location.href.match(/\/(\w+)\.github\.io/);
   if (githubMatch) username = githubMatch[1];
-  Const.APP_SOURCECODE_URL = `https://github.com/${username}/EspruinoApps/tree/master/apps`;
+  Const.APP_SOURCECODE_URL = `https://github.com/${username}/DK08Apps/tree/master/apps`;
 })();
 
 const DEVICEINFO = [ {
     id : "DK08",
-    name : "Bangle.js",
-    features : ["BLE","BLEHID"],
-    img : "https://www.espruino.com/img/BANGLEJS_thumb.jpg"
-  }, {
-    id : "PUCKJS",
-    name : "Puck.js",
-    features : ["BLE","BLEHID","NFC","GYRO","ACCEL","MAG"],
-    img : "https://www.espruino.com/img/PUCKJS_thumb.jpg"
-  }, {
-    id : "PIXLJS",
-    name : "Pixl.js",
+    name : "DK08",
     features : ["BLE","BLEHID","NFC","GRAPHICS"],
-    img : "https://www.espruino.com/img/PIXLJS_thumb.jpg"
-  }, {
-    id : "MDBT42Q",
-    name : "MDBT42Q",
-    features : ["BLE","BLEHID"],
-    img : "https://www.espruino.com/img/MDBT42Q_thumb.jpg"
-  }/*, {
-    id : "MICROBIT",
-    name : "micro:bit",
-    features : ["BLE","BLEHID"],
-    img : "https://www.espruino.com/img/MICROBIT_thumb.jpg"
-  }*/
+    img : "img/dk08.png"
+  }
 ];
 
 function onFoundDeviceInfo(deviceId, deviceVersion) {
