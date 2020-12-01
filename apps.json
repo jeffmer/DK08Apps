@@ -74,8 +74,8 @@
     "tags": "widget",
     "type": "widget",
     "storage": [
-      {"name":"widancs.wid.js","url":"ancs.min.js"},
-      {"name":"widancs.json","url":"widancs.json.js"}
+      {"name":"widancs.wid.js","url":"ancs.wid.js"},
+      {"name":"widancs.json","url":"widancs.json"}
     ]
   },
   { "id": "widmp",
