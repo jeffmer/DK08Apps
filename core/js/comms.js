@@ -47,7 +47,7 @@ const Comms = {
         Puck.write("\x03",rstHandler);
       } else {
         console.log(`<COMMS> reset: complete.`);
-        setTimeout(resolve,250);
+        setTimeout(resolve,1250); // need to give time for lcd to restart (dk08)
       }
     });
   }),

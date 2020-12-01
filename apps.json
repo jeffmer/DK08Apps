@@ -74,7 +74,7 @@
     "tags": "widget",
     "type": "widget",
     "storage": [
-      {"name":"widancs.wid.js","url":"ancs.wid.js"},
+      {"name":"widancs.wid.js","url":"widancs.wid.js"},
       {"name":"widancs.json","url":"widancs.json"}
     ]
   },
