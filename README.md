@@ -10,7 +10,7 @@ The repository contains a set of Espruino Apps for the Dk08 Smartwatch together 
 
 For a brand-new DK08, you need to follow the instructions [here](https://github.com/fanoush/ds-d6/tree/master/espruino/DFU/DK08) produced by @fanoush to install Espruino and an SDK11 bootloader. 
 
-The next step is to upgrade to SDK11 using [`DK08-sdk11-to-sdk12.zip`](https://github.com/fanoush/ds-d6/blob/master/espruino/DFU/DK08/DK08-sdk11-to-sdk12.zip).
+The next step is to upgrade to SDK12 using [`DK08-sdk11-to-sdk12.zip`](https://github.com/fanoush/ds-d6/blob/master/espruino/DFU/DK08/DK08-sdk11-to-sdk12.zip).
 
 Finaly you can flash this firmware:
 
