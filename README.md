@@ -12,7 +12,7 @@ For a brand-new DK08, you need to follow the instructions [here](https://github.
 
 The next step is to upgrade to SDK12 using [`DK08-sdk11-to-sdk12.zip`](https://github.com/fanoush/ds-d6/blob/master/espruino/DFU/DK08/DK08-sdk11-to-sdk12.zip).
 
-Finaly you can flash this firmware:
+Finally you can flash this firmware:
 
 [`espruino_2v08_DK08_SDK12_MOD.zip`](https://github.com/jeffmer/DK08Apps/blob/master/firmware/espruino_2v08_DK08_SDK12_MOD.zip)
 
@@ -26,7 +26,7 @@ Single touch moves between menu items and turns on the backlight for 5 sceonds.
 
 Double touch moves between clock faces
 
-To change Apps, a long touch on the touch screen will start the redisplay the startup menu (see picture above).
+To change Apps, a long touch on the touch screen will redisplay the startup menu (see picture above).
  
 ### Warning
 
