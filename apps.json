@@ -1,10 +1,22 @@
 [
+  { "id": "boot",
+    "name": "boot",
+    "tags": "tool,system",
+    "type":"bootloader",
+    "icon": "bootloader.png",
+    "version":"0.01",
+    "description": "THIS MUST BE LOADED FIRST IN A NEW SYSTEM",
+    "storage": [
+      {"name":".boot0","url":"boot.js"}
+    ],
+    "sortorder" : -15
+  },
   { "id": "main",
     "name": "Main",
     "tags": "tool,system",
     "type":"bootloader",
     "icon": "bootloader.png",
-    "version":"0.01",
+    "version":"0.02",
     "description": "This loads the DK08 App execution environment, drivers etc",
     "storage": [
       {"name":".boot0","url":"boot.js"},
