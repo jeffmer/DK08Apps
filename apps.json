@@ -20,6 +20,7 @@
     "description": "This loads the DK08 App execution environment, drivers etc",
     "storage": [
       {"name":"st7301.js","url":"st7301.js"},
+      {"name":"main.js","url":"main.js"},
       {"name":"accel.js","url":"accel.js"},
       {"name":"bletime.js","url":"bletime.js"},
       {"name":"launcher.js","url":"launcher.js"},
