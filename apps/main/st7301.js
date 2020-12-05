@@ -187,7 +187,7 @@ function ST7301(){
   };
   
   g.backlight=function(on){
-    if (on) BL.set(); else BL.reset();
+    if (on) analogWrite(BL,0.5); else BL.reset();
   };
   
   LCD_Init_Off();
