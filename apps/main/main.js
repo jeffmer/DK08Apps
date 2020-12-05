@@ -1,9 +1,4 @@
-function KickWd(){
-  if(!BTN1.read())E.kickWatchdog();
-}
-var wdint=setInterval(KickWd,5000); // 5 secs
-E.enableWatchdog(20, false); // 20 secs
-E.kickWatchdog();
+
 
 var g;
 

@@ -4,7 +4,7 @@
     "tags": "tool,system",
     "type":"bootloader",
     "icon": "bootloader.png",
-    "version":"0.01",
+    "version":"0.02",
     "description": "THIS MUST BE LOADED FIRST IN A NEW SYSTEM",
     "storage": [
       {"name":".boot0","url":"boot.js"}
@@ -16,10 +16,9 @@
     "tags": "tool,system",
     "type":"bootloader",
     "icon": "bootloader.png",
-    "version":"0.02",
+    "version":"0.03",
     "description": "This loads the DK08 App execution environment, drivers etc",
     "storage": [
-      {"name":".boot0","url":"boot.js"},
       {"name":"st7301.js","url":"st7301.js"},
       {"name":"accel.js","url":"accel.js"},
       {"name":"bletime.js","url":"bletime.js"},
