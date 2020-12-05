@@ -31,7 +31,7 @@ const Comms = {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
     } else {
-      if (progress===undefined) return "if(g){g.drawRect(10,g.getHeight()-16,g.getWidth()-10,g.getHeight()-8).flip();p=x=>g.fillRect(10,g.getHeight()-16,10+(g.getWidth()-20)*x/100,g.getHeight()-8).flip();} else {p=x=>{}};"
+      if (progress===undefined) return "if(global.g){g.drawRect(10,g.getHeight()-16,g.getWidth()-10,g.getHeight()-8).flip();p=x=>g.fillRect(10,g.getHeight()-16,10+(g.getWidth()-20)*x/100,g.getHeight()-8).flip();} else {p=x=>{}};"
       return `p(${Math.round(progress*100)});`
     }
   },

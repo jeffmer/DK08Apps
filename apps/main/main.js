@@ -44,7 +44,6 @@ setWatch(()=>{
   DK08.emit("power",D24.read());
 },D24,{repeat:true,debounce:500});
 
-var STOR = require("Storage");
 if (STOR.read("st7301.js")) {
   eval(STOR.read("st7301.js"));
   g =  ST7301();
