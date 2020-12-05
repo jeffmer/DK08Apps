@@ -17,7 +17,7 @@ const Comms = {
   showMessage : (txt) => {
     console.log(`<COMMS> showMessage ${JSON.stringify(txt)}`);
     if (!Const.HAS_E_SHOWMESSAGE) return Promise.resolve();
-    return Comms.write(`\x10E.showMessage(${JSON.stringify(txt)})\n`);
+    return Comms.write(`\x10if (E.showMessage) E.showMessage(${JSON.stringify(txt)})\n`);
   },
   // When upload is finished, show a message (or reload)
   showUploadFinished : () => {
@@ -31,7 +31,7 @@ const Comms = {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
     } else {
-      if (progress===undefined) return "g.drawRect(10,g.getHeight()-16,g.getWidth()-10,g.getHeight()-8).flip();p=x=>g.fillRect(10,g.getHeight()-16,10+(g.getWidth()-20)*x/100,g.getHeight()-8).flip();"
+      if (progress===undefined) return "if(g){g.drawRect(10,g.getHeight()-16,g.getWidth()-10,g.getHeight()-8).flip();p=x=>g.fillRect(10,g.getHeight()-16,10+(g.getWidth()-20)*x/100,g.getHeight()-8).flip();} else {p=x=>{}};"
       return `p(${Math.round(progress*100)});`
     }
   },
