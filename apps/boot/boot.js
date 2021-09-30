@@ -9,3 +9,5 @@ E.showMessage = function(msg,title) {}
 var STOR = require("Storage");
 if (STOR.read("main.js"))
     eval(STOR.read("main.js"));
+V_TZ=STOR.readJSON(["setting.json"],1).timezone;
+E.setTimeZone(V_TZ);
