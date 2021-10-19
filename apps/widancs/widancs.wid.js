@@ -103,10 +103,8 @@
   }
 
   function changed(){
-    if (NRF.getSecurityStatus().connected)
-      drawIcon(4);
-    else
-      drawIcon(3);
+    stage = NRF.getSecurityStatus().connected ? 4 : 3;
+    drawIcon(stage);
     DK08.drawWidgets(); //gets colors right
   }
   
@@ -114,7 +112,7 @@
     NRF.on('connect',changed);
     NRF.on('disconnect',changed);
     NRF.setServices({},{ancs:true});
-    //changed();
+    stage = NRF.getSecurityStatus().connected ? 4 : 3;
   }
   
   })();
