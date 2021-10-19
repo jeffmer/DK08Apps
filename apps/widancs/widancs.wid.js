@@ -92,7 +92,7 @@
     var colors = new Uint16Array([3,3,1,1,2,0]);
     var img = E.toArrayBuffer(atob("GBgBAAAABAAADgAAHwAAPwAAf4AAP4AAP4AAP4AAHwAAH4AAD8AAB+AAA/AAAfgAAf3gAH/4AD/8AB/+AA/8AAf4AAHwAAAgAAAA"));
     g.setColor(colors[stage]);
-    g.drawImage(img,this.x,0,{scale:0.75}).flip();
+    g.drawImage(img,this.x,0,{scale:0.75});
 }
     
   WIDGETS["ancs"] ={area:"tl", width:24,draw:draw};
@@ -107,13 +107,14 @@
       drawIcon(4);
     else
       drawIcon(3);
+    DK08.drawWidgets(); //gets colors right
   }
   
   if (ENABLED && typeof SCREENACCESS!='undefined') {
     NRF.on('connect',changed);
     NRF.on('disconnect',changed);
     NRF.setServices({},{ancs:true});
-    changed();
+    //changed();
   }
   
   })();
