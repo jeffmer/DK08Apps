@@ -106,7 +106,7 @@
     if (NRF.getSecurityStatus().connected)
       drawIcon(4);
     else
-      drawIcon(1);
+      drawIcon(3);
   }
   
   if (ENABLED && typeof SCREENACCESS!='undefined') {
