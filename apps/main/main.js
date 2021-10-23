@@ -79,7 +79,7 @@ E.showMessage = function(msg,title) {
       var w = (g.stringWidth(title)+12)/2;
       g.fillRect((W/2)-w,26,(W/2)+w,26);
     }
-    var lines = msg.split("\n");
+    var lines = g.wrapString(msg,W-2);
     var offset = 26+(H - lines.length*18)/2 ;
     lines.forEach((line,y)=>g.drawString(line,W/2,offset+y*18));
     g.flip();

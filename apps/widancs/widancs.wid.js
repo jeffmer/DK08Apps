@@ -5,30 +5,8 @@
   var ENABLED = s.settings.enabled;
   var CATEGORY = s.settings.category;
 
-  E.on("ANCS", (d)=>{getnotify(d);});
-  E.on("ANCSMSG", (m)=>{printmsg(m);});
-
   var notifyqueue = [];
   var current = {cat:0,uid:0};
-  var msgTO = null;
-  
-  function wordwrap(s){
-    var txt = s.split("\n");
-    var MAXCHARS = 18;
-    for (var i = 0; i < txt.length; i++) {
-      txt[i] = txt[i].trim();
-      var l = txt[i];
-      if (l.length > MAXCHARS) {
-        var p = MAXCHARS;
-        while (p > MAXCHARS - 8 && !" \t-_".includes(l[p]))
-          p--;
-        if (p == MAXCHARS - 8) p = MAXCHARS;
-        txt[i] = l.substr(0, p);
-        txt.splice(i + 1, 0, l.substr(p));
-      }
-    }
-    return txt.join("\n");
-  }
   
   var screentimeout;
   var inalert = false;
@@ -42,19 +20,15 @@
     }, 500);
   } 
 
-  function printmsg(m){
-
-    if (msgTO) clearTimeout(msgTO); 
-    var message = wordwrap(m.message);
-
+  function displaymsg(m){
     //we may already be displaying a prompt, so clear it
     E.showAlert();
     if (screentimeout) clearTimeout(screentimeout);
     SCREENACCESS.request();
     DK08.buzz().then(()=>{
       DK08.backlight(); 
-      E.showAlert(message,m.title).then(()=>{
-        NRF.sendANCSAction(current.uid,current.cat==1);
+      E.showAlert(m.message,m.title).then(()=>{
+        NRF.ancsAction(current.uid,current.cat==1);
         release_screen();
       });
     });
@@ -75,15 +49,16 @@
   }
 
   function next_notify(){
-      if(notifyqueue.length==0 || inalert) return;
-      inalert=true;
-      current = notifyqueue.pop();
-      NRF.requestANCSMessage(current.uid);
-      msgTO=setTimeout(()=>{
-               inalert=false;
-               msgTO=undefined;
-               next_notify();
-      },1000);
+    if(notifyqueue.length==0 || inalert) return;
+    inalert=true;
+    current = notifyqueue.pop();
+    NRF.ancsGetNotificationInfo(current.uid).then(
+      (m)=>{displaymsg(m);}
+    ).catch(function(e){
+      inalert = false;
+      next_notify();
+      E.showMessage("ANCS: "+e,"ERROR");
+    });
   }
 
   var stage = 0;    
@@ -93,26 +68,21 @@
     var img = E.toArrayBuffer(atob("GBgBAAAABAAADgAAHwAAPwAAf4AAP4AAP4AAP4AAHwAAH4AAD8AAB+AAA/AAAfgAAf3gAH/4AD/8AB/+AA/8AAf4AAHwAAAgAAAA"));
     g.setColor(colors[stage]);
     g.drawImage(img,this.x,0,{scale:0.75});
-}
+ }
     
   WIDGETS["ancs"] ={area:"tl", width:24,draw:draw};
     
-  function drawIcon(id){
-    stage = id;
-    WIDGETS["ancs"].draw();
-  }
-
   function changed(){
     stage = NRF.getSecurityStatus().connected ? 4 : 3;
-    drawIcon(stage);
     DK08.drawWidgets(); //gets colors right
   }
   
   if (ENABLED && typeof SCREENACCESS!='undefined') {
+    E.on("ANCS", getnotify);
     NRF.on('connect',changed);
     NRF.on('disconnect',changed);
     NRF.setServices({},{ancs:true});
     stage = NRF.getSecurityStatus().connected ? 4 : 3;
   }
   
-  })();
+})();
