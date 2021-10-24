@@ -1,7 +1,7 @@
 DK08.drawWidgets = function() {
     var w=g.getWidth(), h=g.getHeight();
     var pos = {
-        tl:{x:20, y:0, r:0, c:0}, // if r==1, we're right->left
+        tl:{x:10, y:0, r:0, c:0}, // if r==1, we're right->left
         tr:{x:w-10, y:0, r:1, c:0}
     };
     if (global.WIDGETS) {

@@ -4,7 +4,7 @@ var STOR = require("Storage");
 STOR.list(/\.face\.js$/).forEach(face=>FACES.push(eval(require("Storage").read(face))));
 var face = FACES[iface]();
 var intervalRefSec;
-var ticks = 0;
+var ticks = 90;
 
 function stopdraw() {
   if(intervalRefSec) {intervalRefSec=clearInterval(intervalRefSec);}
@@ -17,10 +17,10 @@ function startdraw() {
   DK08.drawWidgets();
   intervalRefSec = setInterval(()=>{
     face.tick();
-    ++ticks;
-    if (ticks==0){
+    --ticks;
+    if (ticks<=0){
         DK08.drawWidgets();
-        ticks=0;
+        ticks=90;
     }
   },1000);
 }
