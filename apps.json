@@ -4,8 +4,8 @@
     "tags": "tool,system",
     "type":"bootloader",
     "icon": "bootloader.png",
-    "version":"0.02",
-    "description": "THIS MUST BE LOADED FIRST IN A NEW SYSTEM",
+    "version":"0.03",
+    "description": "THIS MUST BE LOADED FIRST IN A NEW SYSTEM, added setting.json with a predefined timezone 2, change it by your timezone",
     "storage": [
       {"name":".boot0","url":"boot.js"},
 	  {"name":"widgets.json","url":"setting.json"}
