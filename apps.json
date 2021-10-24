@@ -7,7 +7,8 @@
     "version":"0.02",
     "description": "THIS MUST BE LOADED FIRST IN A NEW SYSTEM",
     "storage": [
-      {"name":".boot0","url":"boot.js"}
+      {"name":".boot0","url":"boot.js"},
+	  {"name":"widgets.json","url":"setting.json"}
     ],
     "sortorder" : -15
   },
