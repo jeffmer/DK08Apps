@@ -2,7 +2,8 @@
 
     function getFace(){
 
-    function drawTime(d) {
+    function drawTime() {
+        var d = new Date();
         g.reset();
         var da = d.toString().split(" ");
         var time = da[4].substr(0, 5).split(":");
@@ -17,16 +18,8 @@
         g.flip();
       }
 
-    function onSecond(){
-       var t = new Date();
-       if (t.getSeconds() === 0) drawTime(t);
-    }
-
-    function drawAll(){
-       drawTime(new Date());
-    }
-
-    return {init:drawAll, tick:onSecond};
+    return {init:drawTime, tick:drawTime, tickpersec:false};
+    
     }
 
   return getFace;

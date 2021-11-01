@@ -1,16 +1,13 @@
 (() => {
     function getFace(){
         
-        var lastmin=-1;
         function drawClock(){
           var d=Date();
-          if (d.getMinutes()==lastmin) return;
           d=d.toString().split(' ');
           var min=d[4].substr(3,2);
           var sec=d[4].substr(-2);
           var tm=d[4].substring(0,5);
           var hr=d[4].substr(0,2);
-          lastmin=min;
           g.reset();
           g.clearRect(0,20,175,175);
           var w=g.getWidth();
@@ -25,12 +22,7 @@
           g.flip();
         }
 
-        function drawFirst(){
-          lastmin=-1;
-          drawClock();
-        }
-
-        return {init:drawFirst, tick:drawClock};
+        return {init:drawClock, tick:drawClock, tickpersec:false};
      }
 
     return getFace;

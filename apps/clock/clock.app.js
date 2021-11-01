@@ -4,25 +4,32 @@ var STOR = require("Storage");
 STOR.list(/\.face\.js$/).forEach(face=>FACES.push(eval(require("Storage").read(face))));
 var face = FACES[iface]();
 var intervalRefSec;
+var tickTimeout;
 var ticks = 90;
+
 
 function stopdraw() {
   if(intervalRefSec) {intervalRefSec=clearInterval(intervalRefSec);}
+  if(tickTimeout) {tickTimeout=clearTimeout(tickTimeout);}
   g.clear();
+}
+
+function queueMinuteTick(f) {
+  if (tickTimeout) clearTimeout(drawTimeout);
+  tickTimeout = setTimeout(function() {
+    tickTimeout = undefined;
+    f();
+  }, 60000 - (Date.now() % 60000));
 }
 
 function startdraw() {
   g.reset();
   face.init();
+  if (face.tickpersec)
+    intervalRefSec = setInterval(face.tick,1000);
+  else 
+    queueMinuteTick(face.tick);
   DK08.drawWidgets();
-  intervalRefSec = setInterval(()=>{
-    face.tick();
-    --ticks;
-    if (ticks<=0){
-        DK08.drawWidgets();
-        ticks=90;
-    }
-  },1000);
 }
 
 var SCREENACCESS = {
