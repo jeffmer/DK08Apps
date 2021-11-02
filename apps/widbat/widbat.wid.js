@@ -33,6 +33,7 @@
   });
 
   WIDGETS["bat"]={area:"tr",width:40,draw:draw};
+  setInterval(()=>WIDGETS["bat"].draw(), 120000); 
   setWidth();
 })()
 

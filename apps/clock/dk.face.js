@@ -21,7 +21,7 @@
           g.setColor(1);
           g.defColor(1,0x0f);
           var dt=d[0]+" "+d[1]+" "+d[2];//+" "+d[3];
-          g.drawString(dt,(w-g.stringWidth(dt))/2,130);
+          g.drawString(dt,(w-g.stringWidth(dt))/2,110);
           g.flip();
         }
 
