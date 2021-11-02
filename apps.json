@@ -31,7 +31,7 @@
   { "id": "clock",
     "name": "Clock",
     "icon": "clock.png",
-    "version":"0.01",
+    "version":"0.02",
     "description": "Clock with multiple faces - Big, Analogue, Digital, Text.\n Switch between faces with BT1 & BTN3",
     "tags": "clock",
     "type":"clock",
