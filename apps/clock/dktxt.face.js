@@ -2,7 +2,7 @@
 
   function getFace(){
       
-  function drawTime(d) {    
+    function drawTime() {    
       function convert(n){
           var t0 = [" ","one","two","three","four","five","six","seven","eight","nine"];
           var t1 = ["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
@@ -12,6 +12,7 @@
           else if(n<60) return {top:t20[Math.floor(n/10)-2],bot:t0[n%10]};
           return "error";     
       }
+      var d = new Date();
       g.reset();
       g.clearRect(0,20,175,175);
       g.setColor(3);
@@ -26,20 +27,10 @@
       g.flip();
     }
 
-  function onSecond(){
-     var t = new Date();
-     if (t.getSeconds() === 0) {
-        drawTime(t);
+    return {init:drawTime, tick:drawTime, tickpersec:false};
+  
     }
-  }
 
-  function drawAll(){
-     drawTime(new Date());
-  }
-
-  return {init:drawAll, tick:onSecond};
-  }
-
-return getFace;
+    return getFace;
 
 })();
