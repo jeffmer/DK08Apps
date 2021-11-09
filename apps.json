@@ -41,6 +41,7 @@
       {"name":"dkbig.face.js","url":"dkbig.face.js"},
       {"name":"dkana.face.js","url":"dkana.face.js"},
       {"name":"dk.face.js","url":"dk.face.js"},
+      {"name":"nifty.face.js","url":"nifty.face.js"},
       {"name":"dktxt.face.js","url":"dktxt.face.js"}
     ]
   },
