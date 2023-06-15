@@ -105,7 +105,7 @@ var appmenu = {
   "Clock" : function(){if(STOR.read("clock.app.js")) eval(STOR.read("clock.app.js"))}, 
   "Heart" : function(){if(STOR.read("heart.app.js")) eval(STOR.read("heart.app.js"))}, 
   "SetTime":function(){if(STOR.read("bletime.js")) eval(STOR.read("bletime.js"))}, 
-  "Reboot" : function() { E.reboot();}
+  "Reboot" : function() {if(STOR.read("reboot.js")) eval(STOR.read("reboot.js"))}
   };
   
 if (STOR.read("launcher.js")) {
