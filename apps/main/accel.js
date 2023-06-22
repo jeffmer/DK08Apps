@@ -39,9 +39,11 @@ function BMA223(){
         D7.set();
         D2.set();
         setTimeout(()=>{
-          writereg(0x21,0x0E); //latch interrupt for 50ms
-          setbit(0x16,5); // single tap enable
-          setbit(0x19,5); // map it to INT1
+          writereg(0x21,0x03); //latch interrupt for 1 second
+          writereg(0x28,0x04); //slope sensitivity
+          setbit(0x16,0); // motion x enable
+          setbit(0x16,1); // motion y enable
+          setbit(0x19,2); // map it to INT1
           lowPowerMode(true);
         },100);     
     },100);
@@ -50,9 +52,8 @@ function BMA223(){
   // values are 4 is face tap, 2 side tap, 1 bottom or top side tap
   setWatch(()=>{
       var rv = readreg(0x0b);
-      var v = (rv&0x7f)>>4;
-      v  = rv&0x80?-v:v;
-      DK08.emit("tap",v);
+      var v = (rv&0x07);
+      DK08.emit("motion",v);
   },D4,{ repeat:true, debounce:false, edge:'rising' });
 
 
@@ -67,15 +68,15 @@ function BMA223(){
     };
   }
 
-  return {init:initAll, read:readXYZ, lowPower:lowPowerMode};
+  return {init:initAll, read:readXYZ, lowPower:lowPowerMode, rreg:readreg, wreg:writereg};
 }
 
 /*
 var ACCEL = ACC223();
 ACCEL.init();
 
-DK08.on("tap",(v)=>{
-  console.log("Tap: "+v);
+DK08.on("motion",(v)=>{
+  console.log("Motion: "+v);
 });
 */
 
