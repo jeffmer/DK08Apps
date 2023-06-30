@@ -4,6 +4,8 @@
 
 function BMA223(){
   var acc;
+  var stinterval;
+  var activity = 0;
 
   function readreg(r){
     return acc.send([0x80|r,0x00],D2)[1];
@@ -40,6 +42,7 @@ function BMA223(){
         D2.set();
         setTimeout(()=>{
           writereg(0x21,0x03); //latch interrupt for 1 second
+          writereg(0x10,0x0C); //Bandwidth 31.25 Hz
           writereg(0x28,0x04); //slope sensitivity
           setbit(0x16,0); // motion x enable
           setbit(0x16,1); // motion y enable
@@ -53,7 +56,8 @@ function BMA223(){
   setWatch(()=>{
       var rv = readreg(0x0b);
       var v = (rv&0x07);
-      DK08.emit("motion",v);
+      activity=110; 
+      if(!stinterval) stepStart();
   },D4,{ repeat:true, debounce:false, edge:'rising' });
 
 
@@ -62,22 +66,24 @@ function BMA223(){
       return (i & 0x7F)-(i & 0x80);
     }
     return {
-      x:conv(readreg(3)),
-      y:conv(readreg(5)),
-      z:conv(readreg(7))
+      x:8*conv(readreg(3)),
+      y:8*conv(readreg(5)),
+      z:8*conv(readreg(7))
     };
   }
 
-  return {init:initAll, read:readXYZ, lowPower:lowPowerMode, rreg:readreg, wreg:writereg};
+  function stepStart(){
+      stinterval = setInterval(()=>{
+      var a = readXYZ();
+      var sts = E.stepCount(a.x,a.y,a.z);
+      --activity;
+      if (activity<=0) stinterval = clearInterval( stinterval);
+    },80);
 }
 
-/*
-var ACCEL = ACC223();
-ACCEL.init();
+  return {init:initAll, read:readXYZ, lowPower:lowPowerMode, active:()=> {return activity>0;}};
+}
 
-DK08.on("motion",(v)=>{
-  console.log("Motion: "+v);
-});
-*/
+
 
 

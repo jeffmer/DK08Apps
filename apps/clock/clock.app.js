@@ -33,7 +33,7 @@ function startdraw() {
   DK08.drawWidgets();
 }
 
-var SCREENACCESS = {
+global.SCREENACCESS = {
   withApp:true,
   request:function(){
     this.withApp=false;
