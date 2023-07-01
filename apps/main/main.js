@@ -2,7 +2,7 @@
 
 var g;
 
-const DK08 = {
+global.DK08 = {
     ON_TIME:5000,
     RUNNING:false,
     touchTO:null,
@@ -34,6 +34,18 @@ const DK08 = {
         },DK08.ON_TIME);
     }
 };
+
+function clearStepsatMidnight(){
+  var now = new Date();
+  var secs =  now.getHours()*3600+now.getMinutes()*60+now.getSeconds();
+  var tomidnight = 86400-secs;
+  if (DK08.CLEARSTEPS) DK08.CLEARSTEPS = clearTimeout(DK08.CLEARSTEPS);
+  DK08.CLEARSTEPS = setTimeout(()=>{
+      E.stepInit(); 
+      setTimeout(clearStepsatMidnight,60000);},tomidnight*1000);
+}
+
+clearStepsatMidnight();
 
 setWatch(()=>{
   DK08.emit("power",D24.read());
