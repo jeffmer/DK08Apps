@@ -42,8 +42,8 @@ function BMA223(){
         D2.set();
         setTimeout(()=>{
           writereg(0x21,0x03); //latch interrupt for 1 second
-          writereg(0x10,0x0C); //Bandwidth 31.25 Hz
-          writereg(0x28,0x04); //slope sensitivity
+          writereg(0x10,0x0B); //Bandwidth 31.25 Hz
+          writereg(0x28,0x03); //slope sensitivity
           setbit(0x16,0); // motion x enable
           setbit(0x16,1); // motion y enable
           setbit(0x19,2); // map it to INT1
