@@ -61,21 +61,22 @@ function BMA223(){
   },D4,{ repeat:true, debounce:false, edge:'rising' });
 
 
-  function readXYZ(){
+  function readXYZ(){  //returns  -128..+127
     function conv(i){
       return (i & 0x7F)-(i & 0x80);
     }
     return {
-      x:8*conv(readreg(3)),
-      y:8*conv(readreg(5)),
-      z:8*conv(readreg(7))
+      x:conv(readreg(3)),
+      y:conv(readreg(5)),
+      z:conv(readreg(7))
     };
   }
 
+  
   function stepStart(){
       stinterval = setInterval(()=>{
-      var a = readXYZ();
-      var sts = E.stepCount(a.x,a.y,a.z);
+      a = readXYZ();
+      E.stepCount(8*(128+a.x),8*(128+a.y),8*(128+a.z));
       --activity;
       if (activity<=0) stinterval = clearInterval( stinterval);
     },80);
