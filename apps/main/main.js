@@ -47,6 +47,9 @@ function clearStepsatMidnight(){
 
 clearStepsatMidnight();
 
+var s = STOR.readJSON("settings.json",1)||{timezone:0};
+E.setTimeZone(s.timezone);
+
 setWatch(()=>{
   DK08.emit("power",D24.read());
 },D24,{repeat:true,debounce:500});
