@@ -7,6 +7,7 @@ global.DK08 = {
     RUNNING:false,
     touchTO:null,
     bltTO:null,
+    steps:0,
     buzz: (v)=> {
       v = v? v:100;
       D6.set();
@@ -47,9 +48,9 @@ function clearStepsatMidnight(){
 
 clearStepsatMidnight();
 
-var s = STOR.readJSON("settings.json",1)||{timezone:0};
+var s = STOR.readJSON("settings.json",1)||{timezone:0,steps:0};
 E.setTimeZone(s.timezone);
-
+DK08.steps = s.steps;
 setWatch(()=>{
   DK08.emit("power",D24.read());
 },D24,{repeat:true,debounce:500});

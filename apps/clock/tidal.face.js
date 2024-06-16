@@ -4,7 +4,7 @@
 
     const p = Math.PI/2;
     const PRad = Math.PI/180;
-    const HIGHTIDE = Math.floor(Date.parse("2023-07-14T16:30:00")/1000);
+    const HIGHTIDE = Math.floor(Date.parse("2024-06-06T18:57:00")/1000);
 
     function tideangle(){
         t = (Math.floor(Date.now()/1000)-HIGHTIDE)%44714;

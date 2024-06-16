@@ -53,13 +53,13 @@ function BMA223(){
   }
 
   // values are 4 is face tap, 2 side tap, 1 bottom or top side tap
-  setWatch(()=>{
-      var rv = readreg(0x0b);
-      var v = (rv&0x07);
-      activity=110; 
-      if(!stinterval) stepStart();
-  },D4,{ repeat:true, debounce:false, edge:'rising' });
-
+  if (DK08.steps)
+    setWatch(()=>{
+        var rv = readreg(0x0b);
+        var v = (rv&0x07);
+        activity=110; 
+        if(!stinterval) stepStart();
+    },D4,{ repeat:true, debounce:false, edge:'rising' });
 
   function readXYZ(){  //returns  -128..+127
     function conv(i){
