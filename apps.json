@@ -40,10 +40,10 @@
     "storage": [
       {"name":"clock.app.js","url":"clock.app.js"},
       {"name":"dkbig.face.js","url":"dkbig.face.js"},
-      {"name":"dksteps.face.js","url":"dkana.face.js"},
+      {"name":"dksteps.face.js","url":"dksteps.face.js"},
       {"name":"dk.face.js","url":"dk.face.js"},
       {"name":"nifty.face.js","url":"nifty.face.js"},
-      {"name":"tidal.face.js","url":"dktxt.face.js"}
+      {"name":"tidal.face.js","url":"tidal.face.js"}
     ]
   },
   { "id": "heart",
